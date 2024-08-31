@@ -3,6 +3,22 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser, BaseUserManager
 
+from django.db import models
+from django.contrib.auth.models import AbstractUser
+
+class CustomUser(AbstractUser):
+    # Additional fields can go here
+    pass
+
+    class Meta:
+        permissions = [
+            ("can_view", "Can view"),
+            ("can_create", "Can create"),
+            ("can_edit", "Can edit"),
+            ("can_delete", "Can delete"),
+        ]
+
+
 class CustomUserManager(BaseUserManager):
     def create_user(self, username, email, password=None, **extra_fields):
         if not email:
