@@ -7,3 +7,15 @@ def edit_user(request, user_id):
     user = get_object_or_404(CustomUser, id=user_id)
     # Logic to edit the user
     return render(request, 'edit_user.html', {'user': user})
+
+from django.shortcuts import render
+from .models import Book
+
+def book_list(request):
+    books = Book.objects.all()
+    return render(request, 'bookshelf/book_list.html', {'books': books})
+
+def books(request):
+    # Example view to demonstrate how to access the list of books
+    books = Book.objects.all()
+    return render(request, 'bookshelf/books.html', {'books': books})
