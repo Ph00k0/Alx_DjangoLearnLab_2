@@ -137,6 +137,25 @@ X_FRAME_OPTIONS = 'DENY'  # Prevent clickjacking
 SECURE_CONTENT_TYPE_NOSNIFF = True  # Prevent MIME-sniffing
 SECURE_BROWSER_XSS_FILTER = True  # Enable browser XSS filtering
 
+# Other settings...
+
+# Define the header that Django should use to determine if the request is secure
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+# Other security settings...
+
+# Make sure the settings reflect the production environment needs
+SECURE_SSL_REDIRECT = True  # Redirect all non-HTTPS requests to HTTPS
+SECURE_HSTS_SECONDS = 31536000  # Set HSTS header to enforce HTTPS
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True  # Include subdomains in HSTS policy
+SECURE_HSTS_PRELOAD = True  # Allow preloading of HSTS
+SECURE_CONTENT_TYPE_NOSNIFF = True  # Prevent MIME-sniffing of content types
+SECURE_BROWSER_XSS_FILTER = True  # Enable the browser?s XSS filter
+
+# Cookie settings
+SESSION_COOKIE_SECURE = True  # Only send session cookies over HTTPS
+CSRF_COOKIE_SECURE = True  # Only send CSRF cookies over HTTPS
+
 
 # Optionally set a Content Security Policy (CSP) header
 # You may need to install and configure django-csp if you use this
